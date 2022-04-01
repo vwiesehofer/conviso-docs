@@ -5,12 +5,12 @@ sidebar_label: Overview
 ---
 
 ## Overview
-Flow CLI is a command line interface tool to interact with AppSec Flow. 
+The CLI is a command line interface tool to interact with Conviso Platform. 
 
 The primary goal of the CLI is to be a developer friendly tool which automates different functionalities, letting users interact more easily with the platform.
 
 You can use the CLI locally and also inside your [CI/CD] to be able to use the following features:
-- Perform security scans analysis (SAST, SCA, IaC, Container)
+- Perform security scans project (SAST, SCA, IaC, Container)
 - Set policies to block the pipeline depending on different criterias
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license)
 
@@ -39,7 +39,7 @@ $ python3 -m pip install --user conviso-flowcli
 ```
 Check if the install command was well succeeded.
 ```sh
-$ flow --version
+$ conviso --version
 ```
 The command will print the current version and exit with success. Now we are ready to proceed.
 
@@ -52,10 +52,10 @@ This section will guide you to activate the [CLI shell completion](https://en.wi
 ### Bash
 Open your .bashrc file at ~/.bashrc and place the following snippet in the end of file.
 ```sh
-FLOW_COMPLETER="$(which flow_bash_completer.sh)"
+CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
 
-[ -f "$FLOW_COMPLETER" ] && {
-  source "$FLOW_COMPLETER"
+[ -f "$CONVISO_COMPLETER" ] && {
+  source "$CONVISO_COMPLETER"
 }
 ```
 Start a new bash shell session and the shell completion will be available.
@@ -63,10 +63,10 @@ Start a new bash shell session and the shell completion will be available.
 ### Zsh
 Open your .zshrc file at ~/.zshrc and place the following snippet in the end of file.
 ```sh
-FLOW_COMPLETER="$(which flow_zsh_completer.sh)"
+CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
 
-[ -f "$FLOW_COMPLETER" ] && {
-  source "$FLOW_COMPLETER"
+[ -f "$CONVISO_COMPLETER" ] && {
+  source "$CONVISO_COMPLETER"
 }
 ```
 Start a new zsh shell session and the shell completion will be available.
@@ -88,4 +88,4 @@ Start a new fish shell session and the shell completion will be available.
 [fish]: <https://fishshell.com/>
 [convisoappsec]: <https://convisoappsec.com/>
 [CI/CD]: <https://en.wikipedia.org/wiki/CI/CD>
-[AppSec Flow]: <https://app.conviso.com.br/>
+[Conviso Platform]: <https://app.convisoappsec.com/>

@@ -1,27 +1,22 @@
 module.exports = {
-  title: 'AppSec Flow Docs',
+  title: 'Conviso Platform Docs',
   tagline: 'The tagline of my site',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'convisoappsec', // Usually your GitHub org/user name.
+  organizationName: 'convisoappsec', // Usually your GitHub org/user name..
   projectName: 'flow-docs', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'AppSec Flow Docs',
+      title: 'Conviso Platform Docs',
       logo: {
-        alt: 'AppSec Flow Docs Logo',
+        alt: 'Conviso Platform Docs Logo',
         src: 'img/favicon.ico',
       },
       items: [
-        // {
-        //   to: "/api/schema", // adjust the location depending on your baseURL (see configuration)
-        //   label: "API", // change the label with yours
-        //   position: "left",
-        // },
-       /* {
+        /* {
           to: 'docs/',
           activeBasePath: 'docs',
           label: 'Docs',
@@ -38,7 +33,7 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Flow CLI',
+              label: 'CLI',
               to: 'cli/installation',
             },
             {
@@ -104,8 +99,43 @@ module.exports = {
       {
         schema: "./static/schema.graphql",
         rootPath: "./docs", // docs will be generated under './docs/swapi' (rootPath/baseURL)
-        baseURL: "api",
+        baseURL: "api/graphql/documentation",
+      },
+    ],
+    /*[
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'api',
+        path: './docs/api/graphql/documentation',
+        routeBasePath: './docs',
+        sidebarPath: require.resolve('./docs/api/graphql/documentation/sidebar-schema.js'),
+        // ... other options
+      },
+    ],*/
+  ],
+
+  themes: [
+    // ... Your other themes.
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        indexBlog: false,
+        indexDocs: true,
+        indexPages: true,
+        docsDir: "docs",
+        hashed: true,
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 25,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
+        // When applying `zh` in language, please install `nodejieba` in your project.
       },
     ],
   ],
+
+
 };

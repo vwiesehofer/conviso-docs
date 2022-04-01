@@ -4,15 +4,19 @@ title: Github Actions
 sidebar_label: Github Actions
 ---
 
+<div style={{textAlign: 'center'}}>
+
 ![img](../../static/img/github-actions.png)
 
+</div>
+
 :::note
-First time using Github Actions? Please refer to the [following tutorial](https://docs.github.com/en/actions).  
+First time using Github Actions? Please refer to the [following documentation](https://docs.github.com/en/actions).  
 :::
 
 ## Introduction
 
-This integration uses the [CLI](../cli/installation) for all communication with AppSec Flow.  
+This integration uses the [CLI](../cli/installation) for all communication with Conviso Platform.  
 By the end of this tutorial you will know how to:
 - Run a SAST scan
 - Run a SCA scan
@@ -21,8 +25,8 @@ By the end of this tutorial you will know how to:
 ## Requirements
 - A Github account
 - All runners hosted by Github are compatible, but if you are using *self-hosted* runners they need to have **Docker** installed in order to work.
-- **FLOW_API_KEY**: This is the API key to communicate with AppSec Flow
-- **FLOW_PROJECT_CODE**: This is the ID of the application in AppSec Flow
+- **CONVISO_API_KEY**: This is the API key to communicate with Conviso Platform
+- **CONVISO_PROJECT_CODE**: This is the ID of the application in Conviso Platform
 - When using Github Enterprise Server it need to be run version 3.0 or later
 
 ## Creating your pipeline
@@ -47,13 +51,13 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
+       CONVISO_PROJECT_CODE: "<project code>"
    steps:
    - uses: actions/checkout@v2
 
    - name: Run SAST
-     run: flow sast run
+     run: conviso sast run
 ```
 
 ## SCA
@@ -73,13 +77,13 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
+       CONVISO_PROJECT_CODE: "<project code>"
    steps:
    - uses: actions/checkout@v2
 
    - name: Run SCA
-     run: flow sca run
+     run: conviso sca run
 ```
 
 ## Continuous Codereview 
@@ -104,8 +108,8 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
+       CONVISO_PROJECT_CODE: "<project code>"
    steps:
     - uses: actions/checkout@v2
 
@@ -113,9 +117,9 @@ jobs:
       #Please use only one of the following approaches in the same job
 
       #Using Tags, ordered by time
-      run: flow deploy create with tag-tracker sort-by time
+      run: conviso deploy create with tag-tracker sort-by time
       #Using Tags, ordered by versioning style (semantic version)
-      run: flow deploy create with tag-tracker sort-by versioning-style
+      run: conviso deploy create with tag-tracker sort-by versioning-style
       #Without using Tags, ordered by Git tree
-      run: flow deploy create with values
+      run: conviso deploy create with values
 ```
